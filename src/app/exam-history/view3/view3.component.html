@@ -1,0 +1,170 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/exam-history/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label="Employee Exam History">
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <!-- <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Direct Recruitment'|
+                uppercase}}</h2> -->
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+                <div class="row">
+                    <div class="section-b col">
+                        <mat-label > Employee Id <span class="required">*</span></mat-label>
+                        <input class="input" type="text" name="Search" matInput formControlName="bullPage" maxlength="50">
+                        <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                        <mat-error *ngIf="submitted && personalForm.get('bullPage')?.errors?.required">{{' Bulletin Page No is
+                          required'}}</mat-error>
+                      </div>
+                    <div class="section-b col">
+                        <mat-label > Cadre Name <span class="required">*</span></mat-label>
+                        <input class="input" type="text" name="Search" matInput formControlName="cadName" maxlength="50">
+                        <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                        <mat-error *ngIf="submitted && personalForm.get('cadName')?.errors?.required">{{' Cadre Name is
+                          required'}}</mat-error>
+                      </div>
+      
+                  </div>
+    
+               <div class="row">
+                <div class="section-b col">
+                    <mat-label> Employee Name <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="empName" >
+                    </div>
+                      <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                      <mat-error *ngIf="submitted && personalForm.get('empName')?.errors?.required">
+                      {{'Employee Name is required'}}</mat-error>
+                  </div> 
+                <div class="section-b col">
+                    <mat-label > Category <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="categ" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('categ')?.errors?.required">{{' Category is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+              <div class="row">
+               
+                <div class="section-b col">
+                    <mat-label> Cadre Code <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="cadCod" >
+                    </div>
+                      <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                      <mat-error *ngIf="submitted && personalForm.get('cadCod')?.errors?.required">
+                      {{'Cadre Category is required'}}</mat-error>
+                  </div> 
+                  <div class="section-b col-6">
+                    <mat-label> Name of the Test <span class="required">*</span></mat-label>
+                    <div class="input-container">  
+                    <mat-select multiple [(value)]="selectedStatus" (selectionChange)="applyTypeFilter()">
+                        <input class="input m-3" (keyup)="applyFilter($event.target.value)" type="text" name="Search"
+                      placeholder="Test Name">
+                        <mat-option *ngFor="let row of status" [value]="row.value">{{row.status}}</mat-option>
+                      </mat-select>
+                    </div>
+                   
+                    <mat-error *ngIf="submitted && personalForm.get('testName')?.errors?.required">
+                      {{'Name of the Test is required'}}
+                    </mat-error>
+                  </div> 
+                  
+              </div>
+
+              <div class="row">
+                <div class="section-b col-6">
+                    <mat-label> Conducted By <span class="required">*</span></mat-label>
+                      <div class="input-container">
+                    <mat-select multiple [(value)]="selectedStatus" (selectionChange)="applyTypeFilter()">
+                        <input class="input m-3" (keyup)="applyFilter($event.target.value)" type="text" name="Search"
+                      placeholder="Conducted By">
+                        <mat-option *ngFor="let row of status" [value]="row.value">{{row.status}}</mat-option>
+                      </mat-select>
+                    </div>
+                   
+                    <mat-error *ngIf="submitted && personalForm.get('condBy')?.errors?.required">
+                      {{'Conducted By is required'}}
+                    </mat-error>
+                  </div> 
+              </div>
+
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label> Month & Year of Exam <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="monYrExm" >
+                    </div>
+                      <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                      <mat-error *ngIf="submitted && personalForm.get('monYrExm')?.errors?.required">
+                      {{'Month & Year of Exam is required'}}</mat-error>
+                  </div> 
+                <div class="section-b col">
+                    <mat-label > Index/Register No. <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="indxRegNo" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('indxRegNo')?.errors?.required">{{' Index/Register No is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+
+
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label> Exam Results Reference <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="exmReslt" maxlength="50">
+                      <button class="browse-button" (click)="fileInput.click()">Browse</button>
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </div>
+                    <mat-error *ngIf="submitted && personalForm.get('exmReslt')?.errors?.required">
+                      {{'Exam Results Reference is required'}}
+                    </mat-error>
+                  </div>
+                
+                </div>
+
+
+              <div class="row">
+                 
+                <div class="section-b col">
+                    <mat-label > Remarks <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="remarks" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('remarks')?.errors?.required">{{' Remarks is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+
+            
+              <div class="row">               
+                
+                <div class="disflex">
+                    
+                    <button mat-flat-button color="primary" type="submit"  >{{'Save' |
+                        uppercase}}</button>
+                    <button mat-flat-button color="warn" >{{'Discard' | uppercase}}</button>
+                            
+                  </div>
+  
+              </div>
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+

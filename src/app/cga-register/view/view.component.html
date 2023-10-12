@@ -1,0 +1,361 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/cga-register/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label="Compassionate Grounds Appoinment Register">
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <!-- <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Direct Recruitment'|
+                uppercase}}</h2> -->
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Reg Serial No<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="regSerNo" maxlength="50" required>
+                  <mat-hint class="hintalign">{{personalForm.get('regSerNo').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('regSerNo')?.errors?.required">
+                    {{'Cadre Code is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label>Name of the Deceased staff<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="deceStf" maxlength="50">
+                  <mat-hint class="hintalign">{{personalForm.get('deceStf').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('deceStf')?.errors?.required">
+                    {{'Cadre Name is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label for = "date">Date of Death<span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="datOfDeath">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>                
+                  <mat-error *ngIf="submitted && personalForm.get('datOfDeath')?.errors?.required">
+                    {{'Date of Death is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label> Date of Application  <span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="datOfAppl">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('datOfAppl')?.errors?.required">
+                    {{'Date of Application is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label> Applicant Name  <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="applName" >
+                     </div>
+                 <mat-error *ngIf="submitted && personalForm.get('applName')?.errors?.required">
+                    {{ 'Applicant Name is required' }}
+                  </mat-error>
+                </div> 
+                <div class="section-b col">
+                    <mat-label for ="date"> Relationship <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="relation" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('relation')?.errors?.required">{{'Relationship is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Applicant Date of Birth <span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="applDOB">
+                  <mat-hint class="hintalign">{{personalForm.get('applDOB').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('applDOB')?.errors?.required">
+                    {{'Applicant Date of Birth is required'}}</mat-error>
+                </div>
+               
+
+                <div class="section-b col">
+                    <mat-label> Applicant Age <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="appliAge" maxlength="50">
+                      <button class="browse-button" (click)="fileInput.click()">Browse</button>
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </div>
+                    <mat-hint class="hintalign">{{personalForm.get('appliAge').value?.length || 0}}/50</mat-hint>
+                    <mat-error *ngIf="submitted && personalForm.get('appliAge')?.errors?.required">
+                      {{'Applicant Age is required'}}
+                    </mat-error>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Applicant Education Qualification<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="eduQual" maxlength="50"
+                    required>
+                  <mat-hint class="hintalign">{{personalForm.get('eduQual').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('eduQual')?.errors?.required">
+                    {{'Applicant Education Qualification is required'}}</mat-error>
+                </div>
+
+  
+              </div>
+
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label > <h3><U>CERTIFICATES</U></h3> </mat-label>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Application<span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="application" maxlength="50">
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 
+                  <mat-error *ngIf="submitted && personalForm.get('application')?.errors?.required">
+                    {{ 'Application is required' }}
+                  </mat-error>
+                </div>                
+               
+                   
+                <div class="section-b col">
+                  <mat-label>Death<span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="death" maxlength="50">
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                  
+                  <mat-error *ngIf="submitted && personalForm.get('death')?.errors?.required">
+                    {{ 'Application is required' }}
+                  </mat-error>
+                </div>  
+
+
+              </div>
+             
+
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label> Legal Heir<span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="leglheir" maxlength="50">
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 
+                  <mat-error *ngIf="submitted && personalForm.get('leglheir')?.errors?.required">
+                    {{ 'Legal Heir is required' }}
+                  </mat-error>
+                </div>  
+
+                <div class="section-b col">
+                  <mat-label> Educational Qualification <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="eduQuali" maxlength="50">
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                  
+                  <mat-error *ngIf="submitted && personalForm.get('eduQuali')?.errors?.required">
+                    {{ 'Educational Qualification  is required' }}
+                  </mat-error>
+                </div>  
+
+  
+          </div>
+
+              <div class="row">
+               
+                <div class="section-b col">
+                  <mat-label> Transfer (TC) <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="transfer" maxlength="50">
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                  
+                  <mat-error *ngIf="submitted && personalForm.get('transfer')?.errors?.required">
+                    {{ 'Transfer  is required' }}
+                  </mat-error>
+                </div> 
+
+                <div class="section-b col">
+                  <mat-label> NOC <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="noc" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('noc')?.errors?.required">
+                    {{ 'NOC  is required' }}
+                  </mat-error>
+                </div> 
+  
+              </div>
+
+
+              <div class="row">
+               
+                <div class="section-b col">
+                  <mat-label> Community <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="community" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('community')?.errors?.required">
+                    {{ 'Community  is required' }}
+                  </mat-error>
+                </div> 
+  
+
+                <div class="section-b col">
+                  <mat-label> Proforma <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="proforma" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('proforma')?.errors?.required">
+                    {{ 'Proforma  is required' }}
+                  </mat-error>
+                </div> 
+  
+              </div>
+
+
+              <div class="row">
+               
+                <div class="section-b col">
+                  <mat-label> Indigent <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="indigent" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('indigent')?.errors?.required">
+                    {{ 'Indigent  is required' }}
+                  </mat-error>
+                </div> 
+
+                <div class="section-b col">
+                  <mat-label> Driving <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="driving" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('driving')?.errors?.required">
+                    {{ 'Driving  is required' }}
+                  </mat-error>
+                </div> 
+  
+              </div>
+
+
+              <div class="row">
+               
+                <div class="section-b col">
+                  <mat-label> Driving Experience <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="drivingExp" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('drivingExp')?.errors?.required">
+                    {{ 'Driving Experience is required' }}
+                  </mat-error>
+                </div> 
+
+                <div class="section-b col">
+                  <mat-label> Typing <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="typing" >
+                    <button class="browse-button" (click)="fileInput.click()">Browse
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </button>
+                  </div>
+                 <mat-error *ngIf="submitted && personalForm.get('typing')?.errors?.required">
+                    {{ 'Typing  is required' }}
+                  </mat-error>
+                </div> 
+  
+              </div>
+
+              <div class="row">
+               
+                <div class="section-b col">
+                  <mat-label> Eligible Status  <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="eligiSts" >
+                     </div>
+                 <mat-error *ngIf="submitted && personalForm.get('eligiSts')?.errors?.required">
+                    {{ 'Eligible Status  is required' }}
+                  </mat-error>
+                </div> 
+                <div class="section-b col">
+                    <mat-label for ="date"> Appoinment Status <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="appoinSts" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('appoinSts')?.errors?.required">{{'Appoinment Status is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label> Remarks <span class="required">*</span></mat-label>
+                  <mat-select formControlName="remarks" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('remarks')?.errors?.required">
+                    {{'Remarks is required'}}</mat-error>
+                </div>
+              </div>
+
+              <div class="row">               
+                
+                <div class="disflex">
+                    <button mat-flat-button color="warn">{{'Discard' | uppercase}}</button>
+                    <button mat-flat-button color="primary" type="submit">{{'Save' |
+                      uppercase}}</button>
+        
+                  </div>
+  
+              </div>
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+

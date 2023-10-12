@@ -1,0 +1,326 @@
+<div class="container">
+  <div class="card-title">
+    <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/asset-details/list"></i>&nbsp;&nbsp;
+    <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+  </div>
+
+  <div>
+    <mat-tab-group class="remove-border-bottom">
+      <mat-tab label="Immovable Assets">
+        <div class="card">
+          <div class="card-title" style="display: flex;justify-content: center;">
+            <!-- <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Direct Recruitment'|
+              uppercase}}</h2> -->
+          </div>
+
+          <form [formGroup]="personalForm">
+
+            <div class="row">
+              <div class="section-b col-md-6">
+                <mat-label>Employee Id<span class="required">*</span></mat-label>
+                <input class="input" type="text" name="Search" matInput formControlName="empId" maxlength="50" required>
+               
+                <mat-error *ngIf="submitted && personalForm.get('empId')?.errors?.required">
+                  {{'Employee Id is required'}}</mat-error>
+              </div>
+              
+
+            </div>
+            <div class="row">
+              <div class="section-b col-md-6">
+                <mat-label > Employee Name <span class="required">*</span></mat-label>
+                <div class="input-container">
+                  <input class="input" type="text" name="Search" matInput formControlName="empName" >
+                </div>
+                  <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>                
+                <mat-error *ngIf="submitted && personalForm.get('datOfDeath')?.errors?.required">
+                  {{'Employee Name is required'}}</mat-error>
+              </div>
+              
+
+            </div>
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Cadre Code <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                  <input class="input" type="text" name="Search" matInput formControlName="cadCode" >
+                  </div>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('cadCode')?.errors?.required">
+                    {{'Cadre Code is required'}}</mat-error>
+                </div> 
+              <div class="section-b col">
+                  <mat-label > Cadre Name <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="cadName" maxlength="50">
+                  <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  <mat-error *ngIf="submitted && personalForm.get('cadName')?.errors?.required">{{' Cadre Name is
+                    required'}}</mat-error>
+                </div>
+
+            </div>
+            <div class="row">
+              <div class="section-b col">
+                <mat-label> Date of Birth <span class="required">*</span></mat-label>
+                <input class="input" type="date" id="dat" name="dat" matInput formControlName="dob">
+                
+                <mat-error *ngIf="submitted && personalForm.get('dob')?.errors?.required">
+                  {{'Date of Birth is required'}}</mat-error>
+              </div>
+             
+
+              <div class="section-b col">
+                  <mat-label> Date of Joining <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="datOfJoin" maxlength="50">
+                    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                  </div>
+                  
+                  <mat-error *ngIf="submitted && personalForm.get('datOfJoin')?.errors?.required">
+                    {{'Applicant Age is required'}}
+                  </mat-error>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Property Description <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="prtyDscrton" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('prtyDscrton')?.errors?.required">
+                    {{'Property Description is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Property District <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="prtyDstrict" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('prtyDstrict')?.errors?.required">
+                    {{'Property District is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+            </div>
+
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Property Division <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="prtyDvson" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('prtyDvson')?.errors?.required">
+                    {{'Property Division is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Property Taluk <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="prtytalk" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('prtytalk')?.errors?.required">
+                    {{'Property Taluk is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+            </div>
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Property Village <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="prtyVilge" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('prtyVilge')?.errors?.required">
+                    {{'Property Village is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Survey Number <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="srvyNum" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('srvyNum')?.errors?.required">
+                    {{' Survey Number  is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Area of Property <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="araOfPrty" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('araOfPrty')?.errors?.required">
+                    {{'Area of Property is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Nature of Land <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="ntrOfLnd" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('ntrOfLnd')?.errors?.required">
+                    {{'Nature of Land is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Acquired Employee <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="acqrdEmp" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('acqrdEmp')?.errors?.required">
+                    {{'Acquired Employee is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Buyer Name <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="byrNme" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('byrNme')?.errors?.required">
+                    {{'Buyer Name is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Buyer Relationship <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="byrReltonsp" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('byrReltonsp')?.errors?.required">
+                    {{'Buyer Relationship is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Date of Acquisition <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="dtOfAcqtn" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('dtOfAcqtn')?.errors?.required">
+                    {{'Date of Acquisition is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Mode of Acquistion <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="mdOfAqston" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('mdOfAqston')?.errors?.required">
+                    {{'Mode of Acquistion is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Seller Name <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="selrName" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('selrName')?.errors?.required">
+                    {{'Seller Name is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Value of Properties <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="vlueOfPrties" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('vlueOfPrties')?.errors?.required">
+                    {{'Value of Properties is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Sanction Details <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="sntonDetls" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('sntonDetls')?.errors?.required">
+                    {{'Sanction Details is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+
+            <div class="row">
+              <div class="section-b col">
+                  <mat-label> Annual Income <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="analIncm" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('analIncm')?.errors?.required">
+                    {{'Annual Income is required'}}
+                  </mat-error>
+                </div>
+              </div>
+
+               <div class="section-b col">
+                  <mat-label> Remarks <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="remarks" maxlength="50">
+                  <mat-error *ngIf="submitted && personalForm.get('remarks')?.errors?.required">
+                    {{'Remarks is required'}}
+                  </mat-error>
+                </div>
+               </div>
+
+
+            </div>
+
+
+
+           
+            <div class="row">               
+              
+              <div class="disflex">
+                  <button mat-flat-button color="warn">{{'Approve' | uppercase}}</button>
+                  <button mat-flat-button color="primary" type="submit">{{'Reject' |
+                    uppercase}}</button>
+      
+                </div>
+
+            </div>
+            
+          </form>
+
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>
+

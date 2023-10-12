@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/staff-strength/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}
+      </h4>
+    </div>
+  
+    <div class="card">
+      <div class="card-title" style="display: flex;justify-content: center;">
+        <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Staff Strength'|
+          uppercase}}</h2>
+      </div>
+  <div class="card">
+  <form [formGroup]="staffSancFormGrp">
+    <div class="row">
+      <div class="section-b col">
+        <mat-label>Cadre Code</mat-label>
+        <input class="input" type="text" name="Search" matInput formControlName="cadcode" >
+              
+      </div>
+      <div class="section-b col">
+        <mat-label>Cadre Name</mat-label>
+        <input class="input" type="text" name="Search" matInput formControlName="cadname" >
+      </div>
+    
+   
+      <div class="section-b col">
+        <mat-label>Cade Category</mat-label>
+        <input class="input" type="text"  name="Search" matInput formControlName="cadcateg">
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="section-b col">
+        <mat-label>Sanctioned</mat-label>
+        <input class="input" type="text" name="Search" matInput formControlName="sanction" >
+      </div>
+      <div class="section-b col">
+        <mat-label>Present</mat-label>
+        <input class="input" type="text" name="Search" matInput formControlName="present" >
+      </div>
+    
+      <div class="section-b col">
+        <mat-label>Vacant</mat-label>
+        <input class="input" type="text" name="Search" matInput formControlName="vacant" >
+      </div>
+      
+    </div>
+    <div class="disflex" *ngIf="!view">
+      <button mat-flat-button color="warn">{{'Discard' | uppercase}}</button>
+      <button mat-flat-button color="primary" type="submit" >{{'Create' |
+        uppercase}}</button>
+    </div>
+ </form>
+  </div>
+</div>
+

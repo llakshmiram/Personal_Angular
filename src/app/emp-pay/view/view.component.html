@@ -1,0 +1,184 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/emp-pay/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label="Employee Pay Fixation">
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Employee Pay Fixation'|
+                uppercase}}</h2>
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Employee ID <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="empId" maxlength="50" required>
+                  <mat-hint class="hintalign">{{personalForm.get('empId').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('empId')?.errors?.required">
+                    {{'Employee ID is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label>Mode of Pay Fixation<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="modOfPayFix" maxlength="50">
+                  <mat-hint class="hintalign">{{personalForm.get('modOfPayFix').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('modOfPayFix')?.errors?.required">
+                    {{'Mode of Pay Fixation is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Employee Name <span class="required">*</span></mat-label>
+                  <mat-select formControlName="empName" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('empName')?.errors?.required">
+                    {{'Employee Name  is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label> Scale of Pay <span class="required">*</span></mat-label>
+                  <mat-select formControlName="scaleofpay" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('scaleofpay')?.errors?.required">
+                    {{'Scale of Pay is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label> Gender <span class="required">*</span></mat-label>
+                  <mat-select formControlName="gender" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('gender')?.errors?.required">
+                    {{'Gender is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label>Basic Pay<span class="required">*</span></mat-label>
+                  <mat-select formControlName="basicPay" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('basicPay')?.errors?.required">
+                    {{'Basic Pay is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Cadre Code <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="cadCod" maxlength="50"
+                    required>
+                  <mat-hint class="hintalign">{{personalForm.get('cadCod').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('cadCod')?.errors?.required">
+                    {{'Cadre Code is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label>Level in Pay Matrix<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="levelPayatrix" maxlength="50">
+                  <mat-hint class="hintalign">{{personalForm.get('levelPayatrix').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('levelPayatrix')?.errors?.required">
+                    {{'Level in Pay Matrix is required'}}</mat-error>
+                </div>  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Cadre Name<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="cadName" maxlength="50"
+                    required>
+                  <mat-hint class="hintalign">{{personalForm.get('cadName').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('cadName')?.errors?.required">
+                    {{'Cadre Name is required'}}</mat-error>
+                </div>
+                <div class="section-b col-6">
+                  <mat-label > Cell in Pay Matrix <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="celPayMatrx" maxlength="50"
+                    required>
+                  <mat-error *ngIf="submitted && personalForm.get('celPayMatrx')?.errors?.required">{{'Cell in Pay Matrix is
+                    required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label >Cadre Category <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="cadCate" maxlength="50"
+                    required>
+                  <mat-hint class="hintalign">{{personalForm.get('cadCate').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('cadCate')?.errors?.required">
+                    {{'Cadre Category is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label for = "date">Date of Effect<span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="dateOfEffect">
+                  <mat-hint class="hintalign">{{personalForm.get('dateOfEffect').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('dateOfEffect')?.errors?.required">
+                    {{'Posted Office Name is required'}}</mat-error>
+                </div>
+  
+              </div>
+              
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Order Date <span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="orderDate">
+                  <mat-hint class="hintalign">{{personalForm.get('orderDate').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('orderDate')?.errors?.required">
+                    {{'Present Office Code is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label for = "date">Due Date of next Increment<span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="duedateOfIncre">
+                  <mat-hint class="hintalign">{{personalForm.get('duedateOfIncre').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('duedateOfIncre')?.errors?.required">
+                    {{'Date of Relived  is required'}}</mat-error>
+                </div>
+  
+              </div>
+
+
+
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Remarks <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="remarks" maxlength="50"
+                    required>
+                  <mat-hint class="hintalign">{{personalForm.get('remarks').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('remarks')?.errors?.required">
+                    {{'Present Office Name is required'}}</mat-error>
+                </div>
+                
+                <div class="disflex">
+                    <button mat-flat-button color="warn">{{'Discard' | uppercase}}</button>
+                    <button mat-flat-button color="primary" type="submit">{{'Save' |
+                      uppercase}}</button>
+        
+                  </div>
+  
+              </div>
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+

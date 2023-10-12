@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/cell-file/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label="Disciplinary File Details">
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Disciplinary File Details'|
+                uppercase}}</h2>
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>File Number <span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="file" maxlength="50" required>
+                  <mat-hint class="hintalign">{{personalForm.get('file').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('file')?.errors?.required">
+                    {{'File Number is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label>Nature of Case<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="natOfCase" maxlength="50">
+                  <mat-hint class="hintalign">{{personalForm.get('natOfCase').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('natOfCase')?.errors?.required">
+                    {{'Nature of Case is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Mode of Charge<span class="required">*</span></mat-label>
+                  <mat-select formControlName="modeOfCharge" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('modeOfCharge')?.errors?.required">
+                    {{'Mode of Charge is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label> Number of Persons <span class="required">*</span></mat-label>
+                  <mat-select formControlName="numOfPerson" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('numOfPerson')?.errors?.required">
+                    {{'Number of Persons is required'}}</mat-error>
+                </div>
+
+               
+              </div>
+
+              <div class="section-b col-6">
+                <mat-label> Current Status <span class="required">*</span></mat-label>
+                <mat-select formControlName="curstatus" multiple>
+                  <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="submitted && personalForm.get('curstatus')?.errors?.required">
+                  {{'Current Status is required'}}</mat-error>
+              </div>
+
+
+  
+             
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+

@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/exam-history/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label="Exam History">
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <!-- <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Direct Recruitment'|
+                uppercase}}</h2> -->
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+              <div class="row">
+                <div class="section-b col-md-6">
+                  <mat-label>Employee Id<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="empId" maxlength="50" required>
+                 
+                  <mat-error *ngIf="submitted && personalForm.get('empId')?.errors?.required">
+                    {{'Employee Id is required'}}</mat-error>
+                </div>
+                
+  
+              </div>
+               <div class="row">
+                <div class="section-b col">
+                    <mat-label> Cadre Name <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="cadName" >
+                    </div>
+                      <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                      <mat-error *ngIf="submitted && personalForm.get('cadName')?.errors?.required">
+                      {{'Cadre Name is required'}}</mat-error>
+                  </div> 
+                <div class="section-b col">
+                    <mat-label > Employee Name <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="empName" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('empName')?.errors?.required">{{' Employee Name is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+              <div class="row">
+               
+                <div class="section-b col">
+                    <mat-label> Cadre Category <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="cadCate" >
+                    </div>
+                      <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                      <mat-error *ngIf="submitted && personalForm.get('cadCate')?.errors?.required">
+                      {{'Cadre Category is required'}}</mat-error>
+                  </div> 
+                <div class="section-b col">
+                    <mat-label > Cadre Code <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="cadCode" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('cadCode')?.errors?.required">{{' Cadre Code is
+                      required'}}</mat-error>
+                  </div>
+                  
+              </div>
+
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label> Conducted By <span class="required">*</span></mat-label>
+                      <div class="input-container">
+                    <mat-select multiple [(value)]="selectedStatus" (selectionChange)="applyTypeFilter()">
+                        <input class="input m-3" (keyup)="applyFilter($event.target.value)" type="text" name="Search"
+                      placeholder="Conducted By">
+                        <mat-option *ngFor="let row of status" [value]="row.value">{{row.status}}</mat-option>
+                      </mat-select>
+                    </div>
+                   
+                    <mat-error *ngIf="submitted && personalForm.get('condBy')?.errors?.required">
+                      {{'Conducted By is required'}}
+                    </mat-error>
+                  </div>
+
+                  <div class="section-b col">
+                    <mat-label> Name of the Test <span class="required">*</span></mat-label>
+                      <div class="input-container">
+                    <mat-select multiple [(value)]="selectedStatus" (selectionChange)="applyTypeFilter()">
+                        <input class="input m-3" (keyup)="applyFilter($event.target.value)" type="text" name="Search"
+                      placeholder="Test Name">
+                        <mat-option *ngFor="let row of status" [value]="row.value">{{row.status}}</mat-option>
+                      </mat-select>
+                    </div>
+                   
+                    <mat-error *ngIf="submitted && personalForm.get('testName')?.errors?.required">
+                      {{'Name of the Test is required'}}
+                    </mat-error>
+                  </div>
+  
+              </div>
+            
+              <div class="row">               
+                
+                <div class="disflex">
+                    
+                    <button mat-flat-button color="primary" type="submit"  >{{'Save' |
+                        uppercase}}</button>
+                    <button mat-flat-button color="warn" routerLink="/exam-history/view2">{{'Next' | uppercase}}</button>
+                            
+                  </div>
+  
+              </div>
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+

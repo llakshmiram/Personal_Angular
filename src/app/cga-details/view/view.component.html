@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/cga-details/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label = 'Compassionate Ground Appoinment Details'>
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <!-- <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Compassionate Ground Appoinment Details'|
+                uppercase}}</h2> -->
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Cadre Code<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="cadCde" maxlength="50" required>
+                  <mat-hint class="hintalign">{{personalForm.get('cadCde').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('cadCde')?.errors?.required">
+                    {{'Cadre Code is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label>Cadre Name<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="cadName" maxlength="50">
+                  <mat-hint class="hintalign">{{personalForm.get('cadName').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('cadName')?.errors?.required">
+                    {{'Cadre Name is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label>Cadre Category<span class="required">*</span></mat-label>
+                  <mat-select formControlName="cadCate" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('cadCate')?.errors?.required">
+                    {{'Cadre Category is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                  <mat-label> No of Post Approved <span class="required">*</span></mat-label>
+                  <mat-select formControlName="noOfPostAppr" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('noOfPostAppr')?.errors?.required">
+                    {{'No of Post Approved is required'}}</mat-error>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label> BD Res Number <span class="required">*</span></mat-label>
+                  <mat-select formControlName="bdResNum" multiple>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && personalForm.get('bdResNum')?.errors?.required">
+                    {{'BD Res Number is required'}}</mat-error>
+                </div>
+                <div class="section-b col">
+                    <mat-label for ="date"> BD Res Date<span class="required">*</span></mat-label>
+                    <input class="input" type="date" id="dat" name="dat" matInput formControlName="bdResDat">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('bdResDat')?.errors?.required">{{'BD Res Date is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label>BDS Res Reference<span class="required">*</span></mat-label>
+                    <!-- <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="bdsResRefe" maxlength="50">
+                      <button class="browse-button" (click)="fileInput.click()">Browse</button>
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </div> -->
+                    <div class="input-group mb-3">
+                        <button class="browse-button" (click)="fileInput.click()" type="button" id="button-addon1">Button</button>
+                        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                      </div>
+
+                    <!-- <mat-hint class="hintalign">{{personalForm.get('bdsResRefe').value?.length || 0}}/50</mat-hint>
+                    <mat-error *ngIf="submitted && personalForm.get('bdsResRefe')?.errors?.required">
+                      {{'BDS Res Reference is required'}}
+                    </mat-error> -->
+                  </div>
+                
+
+                  <div class="section-b col">
+                    <mat-label>No Of Persons Joined<span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="noOfPersons" maxlength="50"
+                      required>
+                    <mat-hint class="hintalign">{{personalForm.get('noOfPersons').value?.length || 0}}/50
+                    </mat-hint>
+                    <mat-error *ngIf="submitted && personalForm.get('noOfPersons')?.errors?.required">
+                      {{'No Of Persons Joined is required'}}</mat-error>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="section-b col-6">
+                  <mat-label>Date of Appoinment<span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="datOfAppoin">
+                  <mat-hint class="hintalign">{{personalForm.get('datOfAppoin').value?.length || 0}}/50
+                  </mat-hint>
+                  <mat-error *ngIf="submitted && personalForm.get('datOfAppoin')?.errors?.required">
+                    {{'Date of Appoinment'}}</mat-error>
+                </div>
+                
+  
+              </div>
+             
+
+
+              <div class="row">               
+                
+                <div class="disflex">
+                    <button mat-flat-button color="warn">{{'Discard' | uppercase}}</button>
+                    <button mat-flat-button color="primary" type="submit">{{'Save' |
+                      uppercase}}</button>
+        
+                  </div>
+  
+              </div>
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+

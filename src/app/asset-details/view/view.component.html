@@ -1,0 +1,203 @@
+<div class="container">
+    <div class="card-title">
+      <i class="fa fa-arrow-left" style="font-size:20px;cursor: pointer;" routerLink="/asset-details/list"></i>&nbsp;&nbsp;
+      <h4 style="padding:0px !important ;margin:0px !important;font-weight: 600">{{'Go Back'| uppercase}}</h4>
+    </div>
+  
+    <div>
+      <mat-tab-group class="remove-border-bottom">
+        <mat-tab label="Movable Assets">
+          <div class="card">
+            <div class="card-title" style="display: flex;justify-content: center;">
+              <!-- <h2 style="padding:0px !important ;margin:0px !important;font-weight: 600;color: #a29b9b;">{{'Direct Recruitment'|
+                uppercase}}</h2> -->
+            </div>
+  
+            <form [formGroup]="personalForm">
+  
+              <div class="row">
+                <div class="section-b col-md-6">
+                  <mat-label>Employee Id<span class="required">*</span></mat-label>
+                  <input class="input" type="text" name="Search" matInput formControlName="empId" maxlength="50" required>
+                 
+                  <mat-error *ngIf="submitted && personalForm.get('empId')?.errors?.required">
+                    {{'Employee Id is required'}}</mat-error>
+                </div>
+                
+  
+              </div>
+              <div class="row">
+                <div class="section-b col-md-6">
+                  <mat-label > Employee Name <span class="required">*</span></mat-label>
+                  <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="empName" >
+                  </div>
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>                
+                  <mat-error *ngIf="submitted && personalForm.get('datOfDeath')?.errors?.required">
+                    {{'Employee Name is required'}}</mat-error>
+                </div>
+                
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label> Cadre Code <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                    <input class="input" type="text" name="Search" matInput formControlName="cadCode" >
+                    </div>
+                      <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                      <mat-error *ngIf="submitted && personalForm.get('cadCode')?.errors?.required">
+                      {{'Cadre Code is required'}}</mat-error>
+                  </div> 
+                <div class="section-b col">
+                    <mat-label > Cadre Name <span class="required">*</span></mat-label>
+                    <input class="input" type="text" name="Search" matInput formControlName="cadName" maxlength="50">
+                    <mat-option *ngFor="let row of types" [value]="row">{{row}}</mat-option>
+                    <mat-error *ngIf="submitted && personalForm.get('cadName')?.errors?.required">{{' Cadre Name is
+                      required'}}</mat-error>
+                  </div>
+  
+              </div>
+              <div class="row">
+                <div class="section-b col">
+                  <mat-label> Date of Birth <span class="required">*</span></mat-label>
+                  <input class="input" type="date" id="dat" name="dat" matInput formControlName="dob">
+                  
+                  <mat-error *ngIf="submitted && personalForm.get('dob')?.errors?.required">
+                    {{'Date of Birth is required'}}</mat-error>
+                </div>
+               
+
+                <div class="section-b col">
+                    <mat-label> Date of Joining <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="datOfJoin" maxlength="50">
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </div>
+                    
+                    <mat-error *ngIf="submitted && personalForm.get('datOfJoin')?.errors?.required">
+                      {{'Applicant Age is required'}}
+                    </mat-error>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label> Source Of Income <span class="required">*</span></mat-label>
+                      <div class="input-container">
+                    <mat-select multiple [(value)]="selectedStatus" (selectionChange)="applyTypeFilter()">
+                        <input class="input m-3" (keyup)="applyFilter($event.target.value)" type="text" name="Search"
+                      placeholder="Source">
+                        <mat-option *ngFor="let row of status" [value]="row.value">{{row.status}}</mat-option>
+                      </mat-select>
+                    </div>
+                   
+                    <mat-error *ngIf="submitted && personalForm.get('srcOfIncm')?.errors?.required">
+                      {{'Source Of Income is required'}}
+                    </mat-error>
+                  </div>
+
+                 <div class="section-b col">
+                    <mat-label> Value of Property <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="vluOfPrty" maxlength="50">
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </div>
+                    
+                    <mat-error *ngIf="submitted && personalForm.get('vluOfPrty')?.errors?.required">
+                      {{'Value of Property is required'}}
+                    </mat-error>
+                  </div>
+
+  
+              </div>
+
+
+              <div class="row">
+                <div class="section-b col">
+                    <mat-label> Property Registered Name <span class="required">*</span></mat-label>
+                      <div class="input-container">
+                    <mat-select multiple [(value)]="selectedStatus" (selectionChange)="applyTypeFilter()">
+                        <input class="input m-3" (keyup)="applyFilter($event.target.value)" type="text" name="Search"
+                      placeholder="Source">
+                        <mat-option *ngFor="let row of status" [value]="row.value">{{row.status}}</mat-option>
+                      </mat-select>
+                    </div>
+                   
+                    <mat-error *ngIf="submitted && personalForm.get('prtyRejName')?.errors?.required">
+                      {{' Property Registered Name is required'}}
+                    </mat-error>
+                  </div>
+
+               
+
+                  <div class="section-b col-6">
+                    <mat-label for="date">Date Of Purchase <span class="required">*</span></mat-label>
+                    <input class="input" type="date" id="dob" name="dob" matInput formControlName="doPurchse">
+                    <mat-error *ngIf="submitted && personalForm.get('doPurchse')?.errors?.required">{{'Date Of Purchase is
+                      required'}}</mat-error>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="section-b col-6">
+                    <mat-label> Property Description <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="prtyDscrtn" maxlength="50">
+                      <mat-error *ngIf="submitted && personalForm.get('prtyDscrtn')?.errors?.required">
+                      {{'Property Description is required'}}
+                    </mat-error>
+                  </div>
+                </div>
+
+                  <div class="section-b col-6">
+                    <mat-label> Yearly Income from Property <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="yrlyIncmPrty" maxlength="50">
+                      <mat-error *ngIf="submitted && personalForm.get('yrlyIncmPrty')?.errors?.required">
+                      {{'Property Description is required'}}
+                    </mat-error>
+                  </div>
+                  </div>
+
+
+              </div>
+
+
+              <div class="row">
+                <div class="section-b col-6">
+                    <mat-label> Upload Document <span class="required">*</span></mat-label>
+                    <div class="input-container">
+                      <input class="input" type="text" name="Search" matInput formControlName="upldoc" maxlength="50">
+                      <button class="browse-button" (click)="fileInput.click()">Browse</button>
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+                    </div>
+                    <mat-error *ngIf="submitted && personalForm.get('upldoc')?.errors?.required">
+                      {{'Upload Document is required'}}
+                    </mat-error>
+                  </div>
+
+            </div>
+
+
+             
+              <div class="row">               
+                
+                <div class="disflex">
+                    <button mat-flat-button color="warn">{{'Approve' | uppercase}}</button>
+                    <button mat-flat-button color="primary" type="submit">{{'Reject' |
+                      uppercase}}</button>
+        
+                  </div>
+  
+              </div>
+              
+            </form>
+  
+          </div>
+        </mat-tab>
+  
+      </mat-tab-group>
+    </div>
+  </div>
+
