@@ -23,7 +23,7 @@ import { FamilyDetailsModule } from './family-details/family-details.module';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'auth/login', component: LoginComponent,pathMatch:'full' },
   { path: 'auth', loadChildren: () => (import('./auth/auth.module')).then((m) => m.AuthModule) },
   { path: 'office-data', loadChildren: () => (import('./office-data/office-data.module')).then((m) => m.OfficeModule) },
   { path: 'leave', loadChildren: () => (import('./leave/leave.module')).then((m) => m.LeaveModule) },
